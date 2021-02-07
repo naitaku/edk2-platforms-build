@@ -13,33 +13,33 @@ jobs:
       fail-fast: false
       matrix:
         config: 
-          - platformname: RPi3
-            dscfile: Platform/RaspberryPi/RPi3/RPi3.dsc
-            arch: AARCH64
-          - platformname: RPi4
-            dscfile: Platform/RaspberryPi/RPi4/RPi4.dsc
-            arch: AARCH64
-          - platformname: ArmJuno
-            dscfile: Platform/ARM/JunoPkg/ArmJuno.dsc
-            arch: AARCH64
-          - platformname: Sgi575
-            dscfile: Platform/ARM/SgiPkg/Sgi575/Sgi575.dsc
-            arch: AARCH64
-          - platformname: BeagleBoard
-            dscfile: Platform/BeagleBoard/BeagleBoardPkg/BeagleBoardPkg.dsc
-            arch: ARM
-          - platformname: FreedomU500VC707
-            dscfile: Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
-            arch: RISCV64
-          - platformname: FreedomU540HiFiveUnleashed
-            dscfile: Platform/SiFive/U5SeriesPkg/FreedomU540HiFiveUnleashedBoard/U540.dsc
-            arch: RISCV64
-          - platformname: DeveloperBox
-            dscfile: Platform/Socionext/DeveloperBox/DeveloperBox.dsc
-            arch: AARCH64
-          # - platformname: DeveloperBoxMm
-          #   dscfile: Platform/Socionext/DeveloperBox/DeveloperBoxMm.dsc
+          # - platformname: RPi3
+          #   dscfile: Platform/RaspberryPi/RPi3/RPi3.dsc
           #   arch: AARCH64
+          # - platformname: RPi4
+          #   dscfile: Platform/RaspberryPi/RPi4/RPi4.dsc
+          #   arch: AARCH64
+          # - platformname: ArmJuno
+          #   dscfile: Platform/ARM/JunoPkg/ArmJuno.dsc
+          #   arch: AARCH64
+          # - platformname: Sgi575
+          #   dscfile: Platform/ARM/SgiPkg/Sgi575/Sgi575.dsc
+          #   arch: AARCH64
+          # - platformname: BeagleBoard
+          #   dscfile: Platform/BeagleBoard/BeagleBoardPkg/BeagleBoardPkg.dsc
+          #   arch: ARM
+          # - platformname: FreedomU500VC707
+          #   dscfile: Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
+          #   arch: RISCV64
+          # - platformname: FreedomU540HiFiveUnleashed
+          #   dscfile: Platform/SiFive/U5SeriesPkg/FreedomU540HiFiveUnleashedBoard/U540.dsc
+          #   arch: RISCV64
+          # - platformname: DeveloperBox
+          #   dscfile: Platform/Socionext/DeveloperBox/DeveloperBox.dsc
+          #   arch: AARCH64
+          - platformname: DeveloperBoxMm
+            dscfile: Platform/Socionext/DeveloperBox/DeveloperBoxMm.dsc
+            arch: AARCH64
         buildtarget: 
           - RELEASE
           - DEBUG
