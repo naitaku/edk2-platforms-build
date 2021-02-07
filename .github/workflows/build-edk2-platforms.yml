@@ -1,0 +1,93 @@
+name: Build EDK2 platforms
+
+on:
+  push: 
+    branches: [main]
+    paths: [edk2, edk2-platforms, edk2-non-osi]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+      matrix:
+        config: 
+          - platformname: RPi3
+            dscfile: Platform/RaspberryPi/RPi3/RPi3.dsc
+            arch: AARCH64
+          - platformname: RPi4
+            dscfile: Platform/RaspberryPi/RPi4/RPi4.dsc
+            arch: AARCH64
+          - platformname: ArmJuno
+            dscfile: Platform/ARM/JunoPkg/ArmJuno.dsc
+            arch: AARCH64
+          - platformname: Sgi575
+            dscfile: Platform/ARM/SgiPkg/Sgi575/Sgi575.dsc
+            arch: AARCH64
+          - platformname: BeagleBoard
+            dscfile: Platform/BeagleBoard/BeagleBoardPkg/BeagleBoardPkg.dsc
+            arch: ARM
+          - platformname: FreedomU500VC707
+            dscfile: Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
+            arch: RISCV64
+          - platformname: FreedomU540HiFiveUnleashed
+            dscfile: Platform/SiFive/U5SeriesPkg/FreedomU540HiFiveUnleashedBoard/U540.dsc
+            arch: RISCV64
+          - platformname: DeveloperBox
+            dscfile: Platform/Socionext/DeveloperBox/DeveloperBox.dsc
+            arch: AARCH64
+          # - platformname: DeveloperBoxMm
+          #   dscfile: Platform/Socionext/DeveloperBox/DeveloperBoxMm.dsc
+          #   arch: AARCH64
+        buildtarget: 
+          - RELEASE
+          - DEBUG
+    steps:
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            python3.8 \
+            uuid-dev \
+            iasl \
+            git \
+            gcc \
+            nasm \
+            python3-distutils \
+            gcc-arm-linux-gnueabi \
+            gcc-aarch64-linux-gnu \
+            gcc-riscv64-unknown-elf \
+            device-tree-compiler
+          sudo apt-get clean
+          sudo ln -sf /usr/bin/python3.8 /usr/bin/python
+
+      # Use altername cmocka repo
+      # https://github.com/tianocore/edk2/commit/be746104d1766a8c363e74d6063144657820d688
+      - run: git config --global url.https://github.com/neverware-mirrors/cmocka.git.insteadOf https://git.cryptomilk.org/projects/cmocka.git
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true 
+      - run: git submodule foreach git submodule update --init --force --depth=1
+
+      # Run the build commands
+      - run: |
+          export GCC5_ARM_PREFIX=arm-linux-gnueabi-
+          export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
+          export GCC5_RISCV64_PREFIX=riscv64-unknown-elf-
+          export WORKSPACE=$PWD
+          export PACKAGES_PATH=$PWD/edk2:$PWD/edk2-platforms:$PWD/edk2-non-osi
+          . edk2/edksetup.sh
+          make -C edk2/BaseTools
+          build \
+            -n 2 \
+            -p edk2-platforms/${{ matrix.config.dscfile }} \
+            -b ${{ matrix.buildtarget }} \
+            -a ${{ matrix.config.arch }} \
+            -t GCC5
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.config.platformname }}_${{ matrix.config.arch }}_${{ matrix.buildtarget }}_GCC5
+          path: Build/*/${{ matrix.buildtarget }}_GCC5/FV/*.fd

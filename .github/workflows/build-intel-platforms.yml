@@ -1,0 +1,59 @@
+name: Build Intel platforms
+
+on:
+  push: 
+    branches: [main]
+    paths: [edk2, edk2-platforms, edk2-non-osi, FSP]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platformname: 
+          - GalagoPro3
+          - KabylakeRvp3
+          - UpXtreme
+          - WhiskeylakeURvp
+          - CometlakeURvp
+        buildtarget: 
+          - RELEASE
+          - DEBUG
+    steps:
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential \
+            python3.8 \
+            uuid-dev \
+            iasl \
+            git \
+            gcc \
+            nasm \
+            python3-distutils
+          sudo apt-get clean
+          sudo ln -sf /usr/bin/python3.8 /usr/bin/python
+
+      # Use altername cmocka repo
+      # https://github.com/tianocore/edk2/commit/be746104d1766a8c363e74d6063144657820d688
+      - run: git config --global url.https://github.com/neverware-mirrors/cmocka.git.insteadOf https://git.cryptomilk.org/projects/cmocka.git
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true 
+      - run: git submodule foreach git submodule update --init --force --depth=1
+
+      # Run the build commands
+      - run: |
+          cd edk2
+          source ./edksetup.sh
+          cd ..
+          cd edk2-platforms/Platform/Intel
+          python build_bios.py -p ${{ matrix.platformname }} -t GCC5 --${{ matrix.buildtarget }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_GCC5
+          path: Build/*/${{ matrix.platformname }}/${{ matrix.buildtarget }}_GCC5/FV/*.fd
