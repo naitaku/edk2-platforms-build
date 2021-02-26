@@ -26,6 +26,7 @@ The links below don't require your Github login.
 | UpXtreme | [UpXtreme_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/UpXtreme_RELEASE_GCC5.zip) | [UpXtreme_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/UpXtreme_DEBUG_GCC5.zip) |
 | WhiskeylakeURvp | [WhiskeylakeURvp_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/WhiskeylakeURvp_RELEASE_GCC5.zip) | [WhiskeylakeURvp_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/WhiskeylakeURvp_DEBUG_GCC5.zip) |
 | CometlakeURvp | [CometlakeURvp_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/CometlakeURvp_RELEASE_GCC5.zip) | [CometlakeURvp_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/CometlakeURvp_DEBUG_GCC5.zip) |
+| TigerlakeURvp | [TigerlakeURvp_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/TigerlakeURvp_RELEASE_GCC5.zip) | [TigerlakeURvp_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-intel-platforms/main/TigerlakeURvp_DEBUG_GCC5.zip) |
 
 ### Raspberry Pi
 
