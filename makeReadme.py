@@ -36,7 +36,8 @@ platforms = ["GalagoPro3",
   "KabylakeRvp3",
   "UpXtreme",
   "WhiskeylakeURvp",
-  "CometlakeURvp"]
+  "CometlakeURvp",
+  "TigerlakeURvp"]
 makelinks(platforms, "intel")
 
 title("### Raspberry Pi")

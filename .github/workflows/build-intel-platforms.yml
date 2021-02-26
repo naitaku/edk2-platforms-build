@@ -16,6 +16,7 @@ jobs:
           - UpXtreme
           - WhiskeylakeURvp
           - CometlakeURvp
+          - TigerlakeURvp
         buildtarget: 
           - RELEASE
           - DEBUG
