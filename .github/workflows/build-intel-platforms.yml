@@ -2,8 +2,6 @@ name: Build Intel platforms
 
 on:
   push: 
-    branches: [main]
-    paths: [edk2, edk2-platforms, edk2-non-osi, FSP]
   workflow_dispatch:
 
 jobs:
@@ -18,6 +16,7 @@ jobs:
           - UpXtreme
           - WhiskeylakeURvp
           - CometlakeURvp
+          - TigerlakeURvp
         buildtarget: 
           - RELEASE
           - DEBUG

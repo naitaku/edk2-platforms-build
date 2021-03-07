@@ -2,8 +2,6 @@ name: Build EDK2 platforms
 
 on:
   push: 
-    branches: [main]
-    paths: [edk2, edk2-platforms, edk2-non-osi]
   workflow_dispatch:
 
 jobs:
