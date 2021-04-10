@@ -27,8 +27,9 @@ jobs:
             uuid-dev \
             iasl \
             nasm \
-            llvm \
-            lld \
+            llvm-11 \
+            lld-11 \
+            clang-11 \
             device-tree-compiler
           sudo apt-get clean
 
@@ -43,7 +44,7 @@ jobs:
 
       # Run the build commands
       - run: |
-          export CLANG_BIN=/usr/lib/llvm-10/bin/
+          export CLANG_BIN=/usr/lib/llvm-11/bin/
           cd edk2
           source ./edksetup.sh
           cd ..
