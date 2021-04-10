@@ -51,6 +51,10 @@ jobs:
             device-tree-compiler
           sudo apt-get clean
 
+      # Use altername cmocka repo
+      # https://github.com/tianocore/edk2/commit/be746104d1766a8c363e74d6063144657820d688
+      - run: git config --global url.https://github.com/neverware-mirrors/cmocka.git.insteadOf https://git.cryptomilk.org/projects/cmocka.git
+
       - uses: actions/checkout@v2
         with:
           submodules: true 
