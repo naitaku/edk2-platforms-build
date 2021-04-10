@@ -27,6 +27,8 @@ jobs:
             uuid-dev \
             iasl \
             nasm \
+            llvm \
+            lld \
             device-tree-compiler
           sudo apt-get clean
 
