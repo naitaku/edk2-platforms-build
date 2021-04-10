@@ -43,6 +43,7 @@ jobs:
 
       # Run the build commands
       - run: |
+          export CLANG_BIN=/usr/lib/llvm-10/bin/
           cd edk2
           source ./edksetup.sh
           cd ..
