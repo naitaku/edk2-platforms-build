@@ -1,0 +1,58 @@
+name: Build Intel platforms
+
+on:
+  push: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platformname: 
+          - BoardMtOlympus
+          - BoardX58Ich10
+          - GalagoPro3
+          - KabylakeRvp3
+          - UpXtreme
+          - WhiskeylakeURvp
+          - CometlakeURvp
+          - TigerlakeURvp
+          - CooperCityRvp
+          - WilsonCityRvp
+        buildtarget: 
+          - RELEASE
+          - DEBUG
+    steps:
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - uses: actions/checkout@v2
+        with:
+          submodules: true 
+      - run: git submodule foreach git submodule update --init --force --depth=1
+      - run: |
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -Uri "https://www.nasm.us/pub/nasm/releasebuilds/2.15/win64/nasm-2.15-win64.zip" -OutFile nasm.zip
+        Expand-Archive nasm.zip .
+      - run: |
+        Invoke-WebRequest -Uri "https://acpica.org/sites/acpica/files/iasl-win-20210604.zip" -OutFile iasl.zip
+        Expand-Archive iasl.zip ASL
+
+      # Run the build commands
+      - run: |
+          set NASM_PREFIX=%CD%\nasm-2.15\
+          set IASL_PREFIX=%CD%\ASL\
+          cd edk2
+          edksetup.bat Rebuild VS2019
+          cd ..
+          cd edk2-platforms\Platform\Intel
+          python build_bios.py -p ${{ matrix.platformname }} -t VS2019 --${{ matrix.buildtarget }}
+        shell: cmd
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_VS2019
+          path: Build/*/${{ matrix.platformname }}/${{ matrix.buildtarget }}_VS2019/FV/*.fd

@@ -91,5 +91,5 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.config.platformname }}_${{ matrix.config.arch }}_${{ matrix.buildtarget }}_GCC5
+          name: ${{ matrix.config.platformname }}_${{ matrix.buildtarget }}_GCC5
           path: Build/*/${{ matrix.buildtarget }}_GCC5/FV/*.fd
