@@ -34,12 +34,13 @@ jobs:
           submodules: true 
       - run: git submodule foreach git submodule update --init --force --depth=1
       - run: |
-        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        Invoke-WebRequest -Uri "https://www.nasm.us/pub/nasm/releasebuilds/2.15/win64/nasm-2.15-win64.zip" -OutFile nasm.zip
-        Expand-Archive nasm.zip .
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Invoke-WebRequest -Uri "https://www.nasm.us/pub/nasm/releasebuilds/2.15/win64/nasm-2.15-win64.zip" -OutFile nasm.zip
+          Expand-Archive nasm.zip .
       - run: |
-        Invoke-WebRequest -Uri "https://acpica.org/sites/acpica/files/iasl-win-20210604.zip" -OutFile iasl.zip
-        Expand-Archive iasl.zip ASL
+          [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+          Invoke-WebRequest -Uri "https://acpica.org/sites/acpica/files/iasl-win-20210604.zip" -OutFile iasl.zip
+          Expand-Archive iasl.zip ASL
 
       # Run the build commands
       - run: |
