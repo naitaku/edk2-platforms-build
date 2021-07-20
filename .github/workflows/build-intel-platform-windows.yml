@@ -47,7 +47,7 @@ jobs:
           set NASM_PREFIX=%CD%\nasm-2.15\
           set IASL_PREFIX=%CD%\ASL\
           cd edk2
-          edksetup.bat Rebuild VS2019
+          call edksetup.bat Rebuild VS2019
           cd ..
           cd edk2-platforms\Platform\Intel
           python build_bios.py -p ${{ matrix.platformname }} -t VS2019 --${{ matrix.buildtarget }}
