@@ -11,19 +11,19 @@ jobs:
       fail-fast: false
       matrix:
         platformname: 
-          - BoardMtOlympus
-          - BoardX58Ich10
-          - GalagoPro3
-          - KabylakeRvp3
-          - UpXtreme
-          - WhiskeylakeURvp
-          - CometlakeURvp
+          # - BoardMtOlympus
+          # - BoardX58Ich10
+          # - GalagoPro3
+          # - KabylakeRvp3
+          # - UpXtreme
+          # - WhiskeylakeURvp
+          # - CometlakeURvp
           - TigerlakeURvp
-          - CooperCityRvp
-          - WilsonCityRvp
+          # - CooperCityRvp
+          # - WilsonCityRvp
         buildtarget: 
           - RELEASE
-          - DEBUG
+          # - DEBUG
     steps:
       - uses: actions/setup-python@v2
         with:
@@ -46,6 +46,7 @@ jobs:
       - run: |
           set NASM_PREFIX=%CD%\nasm-2.15\
           set IASL_PREFIX=%CD%\ASL\
+          for /f "DELIMS=" %%A in ('python -c "import os, sys; print(os.path.dirname(sys.executable))"') do set PYTHON_HOME=%%A
           cd edk2
           call edksetup.bat Rebuild VS2019
           cd ..
