@@ -12,31 +12,37 @@ jobs:
       matrix:
         config: 
           - platformname: RPi3
-            dscfile: Platform/RaspberryPi/RPi3/RPi3.dsc
+            dscfile: edk2-platforms/Platform/RaspberryPi/RPi3/RPi3.dsc
             arch: AARCH64
           - platformname: RPi4
-            dscfile: Platform/RaspberryPi/RPi4/RPi4.dsc
+            dscfile: edk2-platforms/Platform/RaspberryPi/RPi4/RPi4.dsc
             arch: AARCH64
           - platformname: ArmJuno
-            dscfile: Platform/ARM/JunoPkg/ArmJuno.dsc
+            dscfile: edk2-platforms/Platform/ARM/JunoPkg/ArmJuno.dsc
             arch: AARCH64
           - platformname: Sgi575
-            dscfile: Platform/ARM/SgiPkg/Sgi575/Sgi575.dsc
+            dscfile: edk2-platforms/Platform/ARM/SgiPkg/Sgi575/Sgi575.dsc
             arch: AARCH64
           - platformname: BeagleBoard
-            dscfile: Platform/BeagleBoard/BeagleBoardPkg/BeagleBoardPkg.dsc
+            dscfile: edk2-platforms/Platform/BeagleBoard/BeagleBoardPkg/BeagleBoardPkg.dsc
             arch: ARM
           - platformname: FreedomU500VC707
-            dscfile: Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
+            dscfile: edk2-platforms/Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
             arch: RISCV64
           - platformname: FreedomU540HiFiveUnleashed
-            dscfile: Platform/SiFive/U5SeriesPkg/FreedomU540HiFiveUnleashedBoard/U540.dsc
+            dscfile: edk2-platforms/Platform/SiFive/U5SeriesPkg/FreedomU540HiFiveUnleashedBoard/U540.dsc
             arch: RISCV64
           - platformname: DeveloperBox
-            dscfile: Platform/Socionext/DeveloperBox/DeveloperBox.dsc
+            dscfile: edk2-platforms/Platform/Socionext/DeveloperBox/DeveloperBox.dsc
             arch: AARCH64
+          - platformname: Quark
+            dscfile: edk2-platforms/Platform/Intel/QuarkPlatformPkg/Quark.dsc
+            arch: IA32
+          - platformname: Vlv2TbltDevicePkgX64
+            dscfile: edk2-platforms/Platform/Intel/Vlv2TbltDevicePkg/PlatformPkgX64.dsc 
+            arch: X64 -a IA32
           # - platformname: DeveloperBoxMm
-          #   dscfile: Platform/Socionext/DeveloperBox/DeveloperBoxMm.dsc
+          #   dscfile: edk2-platforms/Platform/Socionext/DeveloperBox/DeveloperBoxMm.dsc
           #   arch: AARCH64
         buildtarget: 
           - RELEASE
@@ -60,10 +66,6 @@ jobs:
           sudo apt-get clean
           sudo ln -sf /usr/bin/python3.8 /usr/bin/python
 
-      # Use altername cmocka repo
-      # https://github.com/tianocore/edk2/commit/be746104d1766a8c363e74d6063144657820d688
-      - run: git config --global url.https://github.com/neverware-mirrors/cmocka.git.insteadOf https://git.cryptomilk.org/projects/cmocka.git
-
       - uses: actions/checkout@v2
         with:
           submodules: true 
@@ -75,15 +77,16 @@ jobs:
           export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
           export GCC5_RISCV64_PREFIX=riscv64-unknown-elf-
           export WORKSPACE=$PWD
-          export PACKAGES_PATH=$PWD/edk2:$PWD/edk2-platforms:$PWD/edk2-non-osi
+          export PACKAGES_PATH=$WORKSPACE/edk2:$WORKSPACE/edk2-platforms:$WORKSPACE/edk2-non-osi
+          export PACKAGES_PATH=$PACKAGES_PATH:$WORKSPACE/edk2-platforms/Silicon/Intel:$WORKSPACE/edk2-platforms/Platform/Intel:$WORKSPACE/edk2-non-osi/Silicon/Intel:
           . edk2/edksetup.sh
           make -C edk2/BaseTools
           build \
             -n 2 \
-            -p edk2-platforms/${{ matrix.config.dscfile }} \
             -b ${{ matrix.buildtarget }} \
-            -a ${{ matrix.config.arch }} \
-            -t GCC5
+            -t GCC5 \
+            -p ${{ matrix.config.dscfile }} \
+            -a ${{ matrix.config.arch }}
 
       - uses: actions/upload-artifact@v2
         with:
