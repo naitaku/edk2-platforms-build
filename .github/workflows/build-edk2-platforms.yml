@@ -62,7 +62,8 @@ jobs:
             gcc-arm-linux-gnueabi \
             gcc-aarch64-linux-gnu \
             gcc-riscv64-unknown-elf \
-            device-tree-compiler
+            device-tree-compiler \
+            gcab
           sudo apt-get clean
           sudo ln -sf /usr/bin/python3.8 /usr/bin/python
 
