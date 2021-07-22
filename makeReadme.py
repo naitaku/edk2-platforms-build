@@ -32,12 +32,15 @@ def title(str):
 
 print(header)
 title("### Intel")
-platforms = ["GalagoPro3",
+platforms = [
+  "BoardX58Ich10",
+  "GalagoPro3",
   "KabylakeRvp3",
   "UpXtreme",
   "WhiskeylakeURvp",
   "CometlakeURvp",
-  "TigerlakeURvp"]
+  "TigerlakeURvp",
+  "WilsonCityRvp"]
 makelinks(platforms, "intel")
 
 title("### Raspberry Pi")

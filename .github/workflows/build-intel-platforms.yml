@@ -7,37 +7,37 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      toolchain: GCC5
     strategy:
       fail-fast: false
       matrix:
         platformname: 
+          - BoardX58Ich10
           - GalagoPro3
           - KabylakeRvp3
           - UpXtreme
           - WhiskeylakeURvp
           - CometlakeURvp
           - TigerlakeURvp
+          - WilsonCityRvp
         buildtarget: 
           - RELEASE
           - DEBUG
     steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
       - run: |
           sudo apt-get update
           sudo apt-get install -y \
             build-essential \
-            python3.8 \
             uuid-dev \
             iasl \
             git \
             gcc \
-            nasm \
-            python3-distutils
+            nasm
           sudo apt-get clean
-          sudo ln -sf /usr/bin/python3.8 /usr/bin/python
-
-      # Use altername cmocka repo
-      # https://github.com/tianocore/edk2/commit/be746104d1766a8c363e74d6063144657820d688
-      - run: git config --global url.https://github.com/neverware-mirrors/cmocka.git.insteadOf https://git.cryptomilk.org/projects/cmocka.git
 
       - uses: actions/checkout@v2
         with:
@@ -50,9 +50,9 @@ jobs:
           source ./edksetup.sh
           cd ..
           cd edk2-platforms/Platform/Intel
-          python build_bios.py -p ${{ matrix.platformname }} -t GCC5 --${{ matrix.buildtarget }}
+          python build_bios.py -t ${{ env.toolchain }} --${{ matrix.buildtarget }} -p ${{ matrix.platformname }}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_GCC5
-          path: Build/*/${{ matrix.platformname }}/${{ matrix.buildtarget }}_GCC5/FV/*.fd
+          name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_${{ env.toolchain }}
+          path: Build/*/${{ matrix.platformname }}/${{ matrix.buildtarget }}_${{ env.toolchain }}/FV/*.fd
