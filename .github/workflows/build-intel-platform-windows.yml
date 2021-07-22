@@ -44,9 +44,11 @@ jobs:
 
       # Run the build commands
       - run: |
+          subst Y: %CD%
+          cd /d Y:\
           set NASM_PREFIX=%CD%\nasm-2.15\
           set IASL_PREFIX=%CD%\ASL\
-          for /f "DELIMS=" %%A in ('python -c "import os, sys; print(os.path.dirname(sys.executable))"') do set PYTHON_HOME=%%A
+          set PYTHON_HOME=%pythonLocation%
           cd edk2
           call edksetup.bat Rebuild VS2019
           cd ..
