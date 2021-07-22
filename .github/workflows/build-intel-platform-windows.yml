@@ -6,7 +6,8 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2016
+    toolchain: VS2017
     strategy:
       fail-fast: false
       matrix:
@@ -50,13 +51,13 @@ jobs:
           set IASL_PREFIX=%CD%\ASL\
           set PYTHON_HOME=%pythonLocation%
           cd edk2
-          call edksetup.bat Rebuild VS2019
+          call edksetup.bat Rebuild ${{ env.toolchain }}
           cd ..
           cd edk2-platforms\Platform\Intel
-          python build_bios.py -p ${{ matrix.platformname }} -t VS2019 --${{ matrix.buildtarget }}
+          python build_bios.py -p ${{ matrix.platformname }} -t ${{ env.toolchain }} --${{ matrix.buildtarget }}
         shell: cmd
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_VS2019
-          path: Build/*/${{ matrix.platformname }}/${{ matrix.buildtarget }}_VS2019/FV/*.fd
+          name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_${{ env.toolchain }}
+          path: Build/*/${{ matrix.platformname }}/${{ matrix.buildtarget }}_${{ env.toolchain }}/FV/*.fd
