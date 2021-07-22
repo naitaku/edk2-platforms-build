@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: '..'
     strategy:
       fail-fast: false
       matrix:
@@ -35,7 +32,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true 
-          path: '..'
       - run: git submodule foreach git submodule update --init --force --depth=1
       - run: |
           [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
