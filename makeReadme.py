@@ -41,23 +41,23 @@ platforms = ["GalagoPro3",
 makelinks(platforms, "intel")
 
 title("### Raspberry Pi")
-platforms = ["RPi3_AARCH64","RPi4_AARCH64"]
+platforms = ["RPi3","RPi4"]
 makelinks(platforms, "edk2")
 
 title("### Arm")
-platforms = ["ArmJuno_AARCH64","Sgi575_AARCH64"]
+platforms = ["ArmJuno","Sgi575"]
 makelinks(platforms, "edk2")
 
 title("### BeagleBoard")
-platforms = ["BeagleBoard_ARM"]
+platforms = ["BeagleBoard"]
 makelinks(platforms, "edk2")
 
 title("### SiFive (RISC-V)")
-platforms = ["FreedomU500VC707_RISCV64", "FreedomU540HiFiveUnleashed_RISCV64"]
+platforms = ["FreedomU500VC707", "FreedomU540HiFiveUnleashed"]
 makelinks(platforms, "edk2")
 
 title("### Socionext")
-platforms = ["DeveloperBox_AARCH64"]
+platforms = ["DeveloperBox"]
 makelinks(platforms, "edk2")
 
 

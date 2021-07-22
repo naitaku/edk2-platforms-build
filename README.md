@@ -32,31 +32,31 @@ The links below don't require your Github login.
 
 | Platform | RELEASE | DEBUG |
 | -------- | ------- | ----- |
-| RPi3_AARCH64 | [RPi3_AARCH64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi3_AARCH64_RELEASE_GCC5.zip) | [RPi3_AARCH64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi3_AARCH64_DEBUG_GCC5.zip) |
-| RPi4_AARCH64 | [RPi4_AARCH64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi4_AARCH64_RELEASE_GCC5.zip) | [RPi4_AARCH64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi4_AARCH64_DEBUG_GCC5.zip) |
+| RPi3 | [RPi3_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi3_RELEASE_GCC5.zip) | [RPi3_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi3_DEBUG_GCC5.zip) |
+| RPi4 | [RPi4_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi4_RELEASE_GCC5.zip) | [RPi4_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/RPi4_DEBUG_GCC5.zip) |
 
 ### Arm
 
 | Platform | RELEASE | DEBUG |
 | -------- | ------- | ----- |
-| ArmJuno_AARCH64 | [ArmJuno_AARCH64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/ArmJuno_AARCH64_RELEASE_GCC5.zip) | [ArmJuno_AARCH64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/ArmJuno_AARCH64_DEBUG_GCC5.zip) |
-| Sgi575_AARCH64 | [Sgi575_AARCH64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/Sgi575_AARCH64_RELEASE_GCC5.zip) | [Sgi575_AARCH64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/Sgi575_AARCH64_DEBUG_GCC5.zip) |
+| ArmJuno | [ArmJuno_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/ArmJuno_RELEASE_GCC5.zip) | [ArmJuno_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/ArmJuno_DEBUG_GCC5.zip) |
+| Sgi575 | [Sgi575_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/Sgi575_RELEASE_GCC5.zip) | [Sgi575_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/Sgi575_DEBUG_GCC5.zip) |
 
 ### BeagleBoard
 
 | Platform | RELEASE | DEBUG |
 | -------- | ------- | ----- |
-| BeagleBoard_ARM | [BeagleBoard_ARM_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/BeagleBoard_ARM_RELEASE_GCC5.zip) | [BeagleBoard_ARM_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/BeagleBoard_ARM_DEBUG_GCC5.zip) |
+| BeagleBoard | [BeagleBoard_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/BeagleBoard_RELEASE_GCC5.zip) | [BeagleBoard_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/BeagleBoard_DEBUG_GCC5.zip) |
 
 ### SiFive (RISC-V)
 
 | Platform | RELEASE | DEBUG |
 | -------- | ------- | ----- |
-| FreedomU500VC707_RISCV64 | [FreedomU500VC707_RISCV64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU500VC707_RISCV64_RELEASE_GCC5.zip) | [FreedomU500VC707_RISCV64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU500VC707_RISCV64_DEBUG_GCC5.zip) |
-| FreedomU540HiFiveUnleashed_RISCV64 | [FreedomU540HiFiveUnleashed_RISCV64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU540HiFiveUnleashed_RISCV64_RELEASE_GCC5.zip) | [FreedomU540HiFiveUnleashed_RISCV64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU540HiFiveUnleashed_RISCV64_DEBUG_GCC5.zip) |
+| FreedomU500VC707 | [FreedomU500VC707_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU500VC707_RELEASE_GCC5.zip) | [FreedomU500VC707_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU500VC707_DEBUG_GCC5.zip) |
+| FreedomU540HiFiveUnleashed | [FreedomU540HiFiveUnleashed_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU540HiFiveUnleashed_RELEASE_GCC5.zip) | [FreedomU540HiFiveUnleashed_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/FreedomU540HiFiveUnleashed_DEBUG_GCC5.zip) |
 
 ### Socionext
 
 | Platform | RELEASE | DEBUG |
 | -------- | ------- | ----- |
-| DeveloperBox_AARCH64 | [DeveloperBox_AARCH64_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/DeveloperBox_AARCH64_RELEASE_GCC5.zip) | [DeveloperBox_AARCH64_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/DeveloperBox_AARCH64_DEBUG_GCC5.zip) |
+| DeveloperBox | [DeveloperBox_RELEASE_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/DeveloperBox_RELEASE_GCC5.zip) | [DeveloperBox_DEBUG_GCC5](https://nightly.link/naitaku/edk2-platforms-build/workflows/build-edk2-platforms/main/DeveloperBox_DEBUG_GCC5.zip) |

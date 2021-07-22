@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       toolchain: GCC5
     strategy:
@@ -84,12 +84,12 @@ jobs:
           make -C edk2/BaseTools
           build \
             -n 2 \
-            -p ${{ matrix.config.dscfile }} \
+            -t ${{ env.toolchain }} \
             -b ${{ matrix.buildtarget }} \
-            -a ${{ matrix.config.arch }} \
-            -t ${{ env.toolchain }}
+            -p ${{ matrix.config.dscfile }} \
+            -a ${{ matrix.config.arch }}
 
       - uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.config.platformname }}_${{ matrix.config.arch }}_${{ matrix.buildtarget }}_${{ env.toolchain }}
+          name: ${{ matrix.config.platformname }}_${{ matrix.buildtarget }}_${{ env.toolchain }}
           path: Build/*/${{ matrix.buildtarget }}_${{ env.toolchain }}/FV/*.fd
