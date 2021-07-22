@@ -7,7 +7,8 @@ on:
 jobs:
   build:
     runs-on: windows-2016
-    toolchain: VS2017
+    env: 
+      toolchain: VS2017
     strategy:
       fail-fast: false
       matrix:
