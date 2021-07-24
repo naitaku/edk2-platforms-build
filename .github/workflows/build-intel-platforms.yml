@@ -37,7 +37,9 @@ jobs:
             git \
             gcc \
             nasm \
-            clang
+            clang \
+            llvm-dev \
+            lld
           sudo apt-get clean
 
       - uses: actions/checkout@v2
@@ -61,6 +63,7 @@ jobs:
 
       # Run the build commands
       - run: |
+          export CLANG38_BIN=/usr/lib/llvm-10/bin/
           cd edk2
           source ./edksetup.sh
           cd ..
