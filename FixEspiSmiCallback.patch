@@ -1,0 +1,36 @@
+diff --git a/Silicon/Intel/CoffeelakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c b/Silicon/Intel/CoffeelakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
+index 9eb61947a3..42e1b3819e 100644
+--- a/Silicon/Intel/CoffeelakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
++++ b/Silicon/Intel/CoffeelakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
+@@ -570,6 +570,7 @@ InsertEspiRecord (
+   @param[in]  DispatchHandle  Used to determine which source have been triggered
+ **/
+ VOID
++EFIAPI
+ EspiSmiCallback (
+   IN  EFI_HANDLE                      DispatchHandle
+   )
+diff --git a/Silicon/Intel/KabylakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c b/Silicon/Intel/KabylakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
+index a8a3a3dac6..967c71d08a 100644
+--- a/Silicon/Intel/KabylakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
++++ b/Silicon/Intel/KabylakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
+@@ -565,6 +565,7 @@ InsertEspiRecord (
+   @param[in]  DispatchHandle  Used to determine which source have been triggered
+ **/
+ VOID
++EFIAPI
+ EspiSmiCallback (
+   IN  EFI_HANDLE                      DispatchHandle
+   )
+diff --git a/Silicon/Intel/TigerlakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c b/Silicon/Intel/TigerlakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
+index 9ce4072e37..fe179e5859 100644
+--- a/Silicon/Intel/TigerlakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
++++ b/Silicon/Intel/TigerlakeSiliconPkg/Pch/PchSmiDispatcher/Smm/PchSmmEspi.c
+@@ -565,6 +565,7 @@ InsertEspiRecord (
+   @param[in]  DispatchHandle  Used to determine which source have been triggered
+ **/
+ VOID
++EFIAPI
+ EspiSmiCallback (
+   IN  EFI_HANDLE                      DispatchHandle
+   )

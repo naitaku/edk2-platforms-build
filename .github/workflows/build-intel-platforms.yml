@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      toolchain: GCC5
+      toolchain: CLANG38
     strategy:
       fail-fast: false
       matrix:
@@ -36,7 +36,8 @@ jobs:
             iasl \
             git \
             gcc \
-            nasm
+            nasm \
+            clang
           sudo apt-get clean
 
       - uses: actions/checkout@v2
@@ -54,6 +55,9 @@ jobs:
           cd edk2-platforms
           curl https://github.com/naitaku/edk2-platforms/commit/59bcc1e1adfac99306ca18eaa6792723055a1b83.patch | git apply -3
 
+      - run: |
+          cd  edk2-platforms
+          git apply -3 < ../FixEspiSmiCallback.patch
 
       # Run the build commands
       - run: |
