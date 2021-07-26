@@ -66,4 +66,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.platformname }}_${{ matrix.buildtarget }}_${{ env.toolchain }}
-          path: Build/**/${{ matrix.platformname }}/${{ matrix.buildtarget }}_${{ env.toolchain }}/FV/*.fd
+          path: Build/**/${{ matrix.buildtarget }}_${{ env.toolchain }}/FV/*.fd
