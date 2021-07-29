@@ -44,16 +44,10 @@ jobs:
           submodules: true 
       - run: git submodule foreach git submodule update --init --force --depth=1
 
-      # Patch for WilsonCityRvp RELEASE
-      - run: |
-          cd edk2-platforms
-          curl https://github.com/naitaku/edk2-platforms/commit/bd4be4ab5fa5fe67874042376dd697a3835ce76d.patch | git apply -3
-
       # Patch for BoardX58Ich10
       - run: |
           cd edk2-platforms
           curl https://github.com/naitaku/edk2-platforms/commit/59bcc1e1adfac99306ca18eaa6792723055a1b83.patch | git apply -3
-
 
       # Run the build commands
       - run: |
