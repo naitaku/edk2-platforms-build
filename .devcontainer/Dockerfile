@@ -51,5 +51,6 @@ ENV WORKSPACE=/home/${USERNAME}/edk2-platforms-build
 ENV PACKAGES_PATH=${WORKSPACE}/edk2:${WORKSPACE}/edk2-platforms:${WORKSPACE}/edk2-non-osi
 WORKDIR ${WORKSPACE}
 
+RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 RUN . edk2/edksetup.sh \
     && make -C edk2/BaseTools
