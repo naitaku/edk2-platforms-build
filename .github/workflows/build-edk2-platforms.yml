@@ -28,9 +28,9 @@ jobs:
           - platformname: BeagleBoard
             dscfile: edk2-platforms/Platform/BeagleBoard/BeagleBoardPkg/BeagleBoardPkg.dsc
             arch: ARM
-          - platformname: FreedomU500VC707
-            dscfile: edk2-platforms/Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
-            arch: RISCV64
+          # - platformname: FreedomU500VC707
+          #   dscfile: edk2-platforms/Platform/SiFive/U5SeriesPkg/FreedomU500VC707Board/U500.dsc
+          #   arch: RISCV64
           - platformname: FreedomU540HiFiveUnleashed
             dscfile: edk2-platforms/Platform/SiFive/U5SeriesPkg/FreedomU540HiFiveUnleashedBoard/U540.dsc
             arch: RISCV64
