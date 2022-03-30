@@ -38,6 +38,8 @@ jobs:
             gcc \
             nasm
           sudo apt-get clean
+          curl -OL https://answers.launchpad.net/ubuntu/+source/nasm/2.15.05-1/+build/20206590/+files/nasm_2.15.05-1_amd64.deb
+          sudo apt install ./nasm_2.15.05-1_amd64.deb
 
       - uses: actions/checkout@v2
         with:
